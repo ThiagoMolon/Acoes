@@ -14,9 +14,14 @@ public class Conection {
 
     public static void main(String[] args) {
     	Stocks acao = new Stocks();
-
+    	int idAcao = acao.getID();
+		double rmAcao = acao.getRendimentoPacao();
+    	String  nmAcao = acao.getnome();
+    	double  preco = acao.getPreco();
+    	
+    	
         // A instrução SQL para inserir
-        String sql = "INSERT INTO produto (idProduto , nmProdut0, preco) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO Acao (idAcao , nmAcao, rmAcao , preco) VALUES (?, ?, ?, ?)";
 
         try (
             // 1. Estabelece a conexão com o banco de dados
@@ -24,13 +29,16 @@ public class Conection {
             // 2. Cria o PreparedStatement com a instrução SQL
             PreparedStatement stmt = conn.prepareStatement(sql)
         ) {
-            // 3. Define os valores para os placeholders (?)
+            
+			// 3. Define os valores para os placeholders (?)
             // O primeiro parâmetro (1) refere-se ao primeiro '?'
-        	stmt.setInt(1, idProduto);
+        	stmt.setInt(1, idAcao);
         	
-            stmt.setString(2, nmProduto);
-            // O segundo parâmetro (2) refere-se ao segundo '?'
-            stmt.setDouble(3, preco);
+            stmt.setString(2, nmAcao);
+
+            stmt.setDouble(3, rmAcao);
+            
+            stmt.setDouble(4, preco);
 
             // 4. Executa a instrução SQL
             // executeUpdate() é usado para INSERT, UPDATE e DELETE
