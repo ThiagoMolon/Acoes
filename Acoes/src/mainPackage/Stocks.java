@@ -3,14 +3,16 @@ package mainPackage;
 public class Stocks {
 
 	private double preco;
+
 	private  int rendimentoPacao;
+
 	private String nome;
 	private int ID;
 	
 	public void setPreco(double preco) {
 		this.preco = preco;
 	}
-	
+
 	public void setRendimentoPacao(int rendimento) {
 		this.rendimentoPacao = rendimento;
 	}
