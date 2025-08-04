@@ -3,7 +3,7 @@ package mainPackage;
 public class Stocks {
 
 	private double preco;
-	private double rendimento;
+	private int rendimento;
 	private double rendimentoPacao;
 	private String nome;
 	private String ID;
@@ -12,7 +12,7 @@ public class Stocks {
 		this.preco = preco;
 	}
 
-	public void setRendimento(double rendimento) {
+	public void setRendimento(int rendimento) {
 		this.rendimento = rendimento;
 	}
 	
@@ -33,7 +33,7 @@ public class Stocks {
 		return this.preco;
 	}
 	
-	public double getRendimento() {
+	public int getRendimento() {
 		System.out.println(this.rendimento);
 		return this.rendimento;
 	}
