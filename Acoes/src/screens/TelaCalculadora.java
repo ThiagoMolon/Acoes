@@ -179,11 +179,6 @@ public class TelaCalculadora extends JFrame {
                         df.format(valorAcumulado))
                     );
                 }
-                
-                if (mes > 600) { // Limite de 50 anos
-                    resultado.append("\nAtingido o limite máximo de 50 anos (600 meses) sem alcançar o montante desejado.");
-                    break;
-                }
             }
             
             resultado.append("\nResumo Final:\n");
