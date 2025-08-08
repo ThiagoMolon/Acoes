@@ -1,4 +1,3 @@
-// Arquivo: src/main/java/br/com/molim/projeto/acao/telas/TelaCalculadora.java
 package screens;
 
 import java.awt.*;
@@ -155,37 +154,24 @@ public class TelaCalculadora extends JFrame {
             double valorAcumulado = 0;
             int mes = 0;
             
-            StringBuilder resultado = new StringBuilder();
-            resultado.append("Simulação para atingir R$ ").append(String.format("%,.2f", montanteDesejado)).append("\n");
-            resultado.append("Investimento mensal: R$ ").append(String.format("%,.2f", investimentoMensal)).append("\n");
-            resultado.append("Rendimento mensal: ").append(String.format("%.4f", rendimentoMensal * 100)).append("%\n\n");
-            
-            resultado.append(String.format("%-10s %-15s %-15s %-15s\n", 
-                "Mês", "Investimento", "Rendimento", "Acumulado"));
-            resultado.append("------------------------------------------------\n");
-            
-            DecimalFormat df = new DecimalFormat("#,##0.00");
-            
+            // Loop para calcular o tempo com juros compostos
             while (valorAcumulado < montanteDesejado) {
                 mes++;
                 double rendimentoMes = valorAcumulado * rendimentoMensal;
                 valorAcumulado += investimentoMensal + rendimentoMes;
-                
-                if (mes % 12 == 0 || valorAcumulado >= montanteDesejado) {
-                    resultado.append(String.format("%-10d %-15s %-15s %-15s\n", 
-                        mes, 
-                        df.format(investimentoMensal), 
-                        df.format(rendimentoMes), 
-                        df.format(valorAcumulado))
-                    );
-                }
             }
             
-            resultado.append("\nResumo Final:\n");
+            DecimalFormat df = new DecimalFormat("#,##0.00");
+            
+            StringBuilder resultado = new StringBuilder();
+            resultado.append("Resumo Final:\n");
+            resultado.append("Tempo para atingir o montante desejado:\n");
             resultado.append("Meses necessários: ").append(mes).append("\n");
             resultado.append("Anos necessários: ").append(String.format("%.1f", mes / 12.0)).append("\n");
+            resultado.append("\nDetalhes dos valores:\n");
+            resultado.append("Montante Desejado: R$ ").append(df.format(montanteDesejado)).append("\n");
             resultado.append("Total Investido: R$ ").append(df.format(mes * investimentoMensal)).append("\n");
-            resultado.append("Montante Final: R$ ").append(df.format(valorAcumulado)).append("\n");
+            resultado.append("Montante Final (aproximado): R$ ").append(df.format(valorAcumulado)).append("\n");
             
             txtResultado.setText(resultado.toString());
         } catch (NumberFormatException ex) {
